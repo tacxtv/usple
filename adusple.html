@@ -118,8 +118,8 @@
             const spawn = params.get('spawn') || 15
             const countDownDate = new Date(`May 7, 2022 19:00:00`).getTime()
             const position = params.get('position') || 'top'
-            const screen = params.get('screen') || 'transparent'
-            document.body.style.backgroundColor = screen
+            const refresh = parseInt(params.get('refresh') || 1, 10)
+            document.body.style.backgroundColor = params.get('screen') || 'transparent'
 
             const interfunc = function () {
                 const now = new Date().getTime()
@@ -137,11 +137,14 @@
                     } else {
                         gsap.fromTo("#ad", {y: 400, opacity: 0, display: 'none'}, {y: 0, opacity: 1, display: 'block'})
                     }
-                    
+
+                    let r
                     refreshSpan(countDownDate)
-                    const r = setInterval(function () {
-                        refreshSpan(countDownDate)
-                    }, 1000)
+                    if (!!refresh) {
+                        r = setInterval(function () {
+                            refreshSpan(countDownDate)
+                        }, 1000)
+                    }
 
                     const y = setTimeout(function () {
                         if (position === 'top') {
@@ -157,8 +160,8 @@
                                 display: 'none'
                             })
                         }
-                        clearTimeout(y);
-                        clearInterval(r);
+                        clearTimeout(y)
+                        if (!!refresh) clearInterval(r)
                     }, 1000 * 8)
                 }
             }
