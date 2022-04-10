@@ -8,7 +8,7 @@
     <title>USPLE PUB</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <style>
         html, body {
             width: 100%;
@@ -106,7 +106,7 @@
            x="639.77965"
            y="118.44395"
            id="tspan909"><tspan
-             style="font-weight:bold;font-family:'Permanent Marker';-inkscape-font-specification:'Permanent Marker,  Bold'"
+             style="font-weight:bold;font-family:'Rubik Mono One';-inkscape-font-specification:'Permanent Marker,  Bold'"
              id="tspan907">Dans --J --H --M --S</tspan></tspan></text>
             </g>
         </g>
@@ -140,11 +140,11 @@
 
                     let r
                     refreshSpan(countDownDate)
-                    if (!!refresh) {
-                        r = setInterval(function () {
-                            refreshSpan(countDownDate)
-                        }, 1000)
-                    }
+                    // if (!!refresh) {
+                    //     r = setInterval(function () {
+                    //         refreshSpan(countDownDate)
+                    //     }, 1000)
+                    // }
 
                     const y = setTimeout(function () {
                         if (position === 'top') {
@@ -180,8 +180,9 @@
             const days = Math.floor(distance2 / (1000 * 60 * 60 * 24))
             const hours = Math.floor((distance2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
             const minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60))
-            const seconds = Math.floor((distance2 % (1000 * 60)) / 1000)
-            document.getElementById("tspan907").innerHTML = "Dans " + days + "J " + hours + "H " + minutes2 + "M " + seconds + "S"
+            // const seconds = Math.floor((distance2 % (1000 * 60)) / 1000)
+            document.getElementById("tspan907").innerHTML = "Dans " + days + "J " + hours + "H " + minutes2 + "M "
+                // + seconds + "S"
         }
 
         function roundup(x, up = 5) {
