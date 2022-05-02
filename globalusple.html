@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="amount"></div>
+        <script type="application/javascript">
+            getAmount();
+            window.setInterval(getAmount, 5000);
+
+            function getAmount() {
+                axios.get('https://streamlabscharity.com/api/v1/teams/@une-semaine-pour-lespoir/une-semaine-pour-lespoir?l=fr-FR')
+                    .then(res => {
+                        document.getElementById('amount').innerHTML = (res.data.amount_raised / 100) + ' €'
+                    })
+            }
+        </script>
+    </body>
+</html>
