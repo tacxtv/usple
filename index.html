@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <style>
+            #amount {
+                font-family: 'Bebas Neue', cursive;
+                font-size: 80px;
+                color: white;
+            }
+        </style>
+    </head>
+    <body style="margin: 0;">
+        <div id="amount"></div>
+        <script type="application/javascript">
+            getAmount();
+            window.setInterval(getAmount, 15000);
+
+            function getAmount() {
+                axios.get('https://widgets.afm-telethon.fr/widget/api/compteur/digital')
+                    .then(res => {
+                        document.getElementById('amount').innerHTML = (parseInt(res.data.total)).toFixed(2) + ' €'
+                    })
+            }
+        </script>
+    </body>
+</html>
