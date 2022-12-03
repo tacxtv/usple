@@ -37,7 +37,7 @@
             function getAmount() {
                 axios.get('https://widgets.afm-telethon.fr/widget/api/compteur/digital')
                     .then(res => {
-                        document.getElementById('amount').innerHTML = numStr((parseInt(res.data.total)).toFixed(2)) + ' €'
+                        document.getElementById('amount').innerHTML = numStr((parseInt(res.data.total)).toFixed(0)) + ' €'
                     })
             }
         </script>
