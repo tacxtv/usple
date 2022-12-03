@@ -16,13 +16,28 @@
         <div style="position: absolute;z-index: 5;width: 593px;text-align:center;color: #421f5d;" id="amount"></div>
 	<img style="position: absolute;" src="https://media.discordapp.net/attachments/1004701240464244768/1048315193207312484/Telethon.png?width=960&height=120">
         <script type="application/javascript">
+	    function numStr(a, b) {
+		  a = '' + a;
+		  b = b || ' ';
+		  var c = '',
+		      d = 0;
+		  while (a.match(/^0[0-9]/)) {
+		    a = a.substr(1);
+		  }
+		  for (var i = a.length-1; i >= 0; i--) {
+		    c = (d != 0 && d % 3 == 0) ? a[i] + b + c : a[i] + c;
+		    d++;
+		  }
+		  return c;
+		}
+		
             getAmount();
             window.setInterval(getAmount, 15000);
 
             function getAmount() {
                 axios.get('https://widgets.afm-telethon.fr/widget/api/compteur/digital')
                     .then(res => {
-                        document.getElementById('amount').innerHTML = (parseInt(res.data.total)).toFixed(2) + ' €'
+                        document.getElementById('amount').innerHTML = numStr((parseInt(res.data.total)).toFixed(2)) + ' €'
                     })
             }
         </script>
