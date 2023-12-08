@@ -19,7 +19,7 @@
             window.setInterval(getAmount, 15000);
 
             function getAmount() {
-                axios.get('https://streamlabscharity.com/api/v1/teams/@telethon-gaming-2022/telethon-gaming-2022?l=fr-FR')
+                axios.get('https://streamlabscharity.com/api/v1/teams/@telethon-gaming-2023/telethon-gaming-2023?l=fr-FR')
                     .then(res => {
                         document.getElementById('amount').innerHTML = (res.data.amount_raised / 100) + ' €'
                     })
